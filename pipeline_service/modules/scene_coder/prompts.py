@@ -167,6 +167,17 @@ Seating furniture / upholstery handbook:
   materials from upholstery.
 - Small pillows should be separate soft rounded cuboids or flattened spheres
   leaning on the back/arms, not hard cubes floating above the seat.
+- Tub-chair playbook: tub chairs, barrel chairs, club chairs, and rounded
+  armchairs need a continuous U-shaped upholstered shell, not a full cylinder,
+  cage, rail, or
+  separate skinny back posts. Model the back and arms as a partial oval
+  cylinder/shell open at the front, with arms lower at the front and a curved
+  high back. Add a separate thick rounded seat cushion sitting inside the
+  shell, front apron below it, raised piping along top/front/seat edges,
+  vertical seam lines on the inner back, and four outward-splayed wooden legs.
+  If the reference has fabric/velvet, add subtle deterministic nap with many
+  very thin darker seam/crease lines or low-opacity narrow cylinders/planes;
+  do not leave the upholstery as a smooth plastic barrel.
 
 Surface decoration / decal handbook:
 - For painted, printed, glazed, engraved, or floral ornament on a ceramic,
@@ -190,6 +201,73 @@ Surface decoration / decal handbook:
   If accurate texture projection is too hard, use simplified decals that
   preserve placement, color, and flatness.
 
+Food vessel / contained food handbook:
+- For bowls, cups, tubs, baskets, strainers, colanders, noodle baskets, and
+  yogurt cups, first separate the object into: outer vessel, rim, base/foot,
+  ribs/mesh or label, contained food surface, and utensil/handle if present.
+  Build those regions as separate named parts with separate materials.
+- Open vessels must read as concave and hollow. Use a LatheGeometry profile
+  for the bowl/cup wall, add a torus or thick cylinder rim at the top, and
+  place the food slightly below the rim but above the bottom. Do not cover
+  the top with a flat lid unless the reference clearly shows an unopened lid.
+- Bamboo/wood noodle baskets and strainers need light tan material, a thick
+  rounded rim, many vertical or radial ribs, a small foot ring, and optional
+  fine mesh lines between ribs. Do not turn them into dark brown wicker nests
+  with random sticks around the base.
+- Noodles should be many horizontal or gently looping tubes sitting inside
+  the bowl. They should coil, overlap, and mound near the center. Never make
+  noodles a vertical bundle, tassel, pole, or curtain rising from the bowl
+  unless the reference explicitly shows lifted noodles.
+- For noodle strands, use deterministic TubeGeometry curves with points in
+  the XZ plane and modest Y variation. Use 12-30 separate strands or nested
+  spiral arcs; keep strand radius small relative to the rim. A few visible
+  front strands are more important than a dense hidden mass.
+- Chopsticks, spoons, ladles, and handles must be attached to the scene
+  logically: leaning diagonally over the rim, partly submerged in food, or
+  mounted to the rim. Avoid a single vertical central rod and avoid rods
+  passing through the bowl wall unless the reference shows that.
+- Yogurt/cream should be a smooth white concave or slightly domed surface
+  inside an open tub, often with a swirl peak. Model it with flattened
+  spheres, shallow lathe/domes, and thin spiral ridges. Put printed text or
+  logos on the side label, not across the food surface.
+- Preserve material contrast: bamboo/wood is warm tan rough wood, noodles are
+  pale yellow or white with soft roughness, yogurt is glossy white, plastic
+  rims/spoons may be saturated blue or another reference color, and metal
+  spoon bowls are metallic.
+
+Jewelry / ring / gemstone handbook:
+- For rings, pendants, brooches, and gemstone jewelry, first separate the
+  object into: band/hoop, shoulders, bezel or prongs, main gemstone, side
+  stones/filigree, inner hole, and engraved/painted accents if present.
+  Never model a ring as only one torus, one sphere, or one black blob.
+- Coordinate convention for rings: make the gemstone face +Z, with the band
+  loop standing in the XY plane and its finger hole visible through the
+  center. A plain `TorusGeometry` already lies in the XY plane; use it for
+  the band, then squash/scale it if the reference shows an oval hole.
+- The band must remain a continuous hoop with a clear empty center. Use a
+  torus or an ordered chain of tubes, plus thinner inner edge highlights if
+  needed. Do not fill the hole with the gemstone or a solid disc.
+- Ring shoulders connect the upper left/right band to the stone setting.
+  Model them as two mirrored tubes or tapered boxes rising from the band to
+  the bezel. Large stones need visible support; they should not float above
+  the band or bury the band behind a sphere.
+- Faceted gemstones need a transparent or translucent blue/white material and
+  angular geometry: low-segment CylinderGeometry, OctahedronGeometry,
+  IcosahedronGeometry, ConeGeometry crown/pavilion pieces, or shallow
+  triangular facet patches. Avoid smooth opaque spheres unless the reference
+  is a pearl/cabochon.
+- Cabochon, moonstone, pearl, and jade stones are smooth domes or spheres,
+  but still need translucency, cloudy internal speckles, rim/bezel support,
+  and smaller side metal details. Do not let the central orb hide the band.
+- Bezel and prongs are structural: add a thin metal torus/ring around the
+  gemstone edge, 4-8 small prongs or claws on the rim, and optional side
+  filigree loops. Keep metalness near the 0.6 cap (NOT above it) with
+  roughness low/medium, and let the color hex carry the silver/gold/blue
+  metal shade — see the metalness cap in the Critical API rules above.
+- Material separation matters more than fine detail: polished blue metal,
+  transparent sapphire, silver filigree, and milky moonstone must be distinct
+  materials with distinct colors/roughness/transmission.
+
 Vehicle modeling playbook:
 - If the OSD or reference image describes a vehicle, establish dimensions
   before creating meshes: `length`, `width`, `height`, `bodyBottom`,
@@ -202,6 +280,16 @@ Vehicle modeling playbook:
   profiles, or shallow ellipsoids for the body and cabin. Avoid a single flat
   black slab. Add separate glass, headlights, taillights, grille/intake,
   bumpers, mirrors, door handles/seams, trim, and four grounded wheels.
+- Compact-car playbook: compact city cars, microcars, golf-cart-like cars,
+  and toy car references should not be simplified into a flat cart or boxy
+  SUV. Build a short wheelbase,
+  tall cabin, rounded bright lower shell, and black roof/canopy as separate
+  forms. Use a rounded hood/front nose, side door panels, semicylindrical
+  fenders or wheel arches, transparent windshield/side glass or open side
+  window cutouts, visible seats, thin black A/B pillars, small mirrors, door
+  handles, grille, paired circular headlights, rear lights, and low tucked
+  wheels. The roof should read as a cap supported by pillars, not a solid
+  rectangular block.
 - Car wheels: for front +Z vehicles, side wheels face outward along the X
   axis. Torus tires start in the XY plane, so rotate tires with
   `tire.rotation.y = Math.PI / 2`; cylinder hubs/caps start on the Y axis,
@@ -221,50 +309,6 @@ Vehicle modeling playbook:
 - Vehicle details are secondary to structure. First get the object class,
   silhouette, count, orientation, and attachment correct; then add trim,
   colors, logos, spokes, tread, and small hardware.
-
-Jewelry / gem / ornament construction guard:
-- For rings, gems, pendants, charms, hanging ornaments, and small abstract
-  sculptures, choose one stable carrier before decoration: torus/tube loop,
-  shallow extruded pendant plate, low-poly faceted gem, capped ornament
-  shell/sphere/cone, or simple lathe/extrude sculpture silhouette.
-- Add attachment hardware only after the carrier is solid. Hooks, jump rings,
-  caps, bails, prongs, clasps, insets, and chain links must visibly touch or
-  overlap the parent part; do not leave small metal bits floating near it.
-- Gems should use readable low-poly facets and conservative glass/metal
-  materials before sparkle marks or tiny highlights.
-
-Food and dish support guard:
-- Identify the edible object and visible support vessel separately. Build the
-  dominant food mass first, then plate, bowl, cup, glass, tray, or utensils
-  only when visible.
-- Preserve subtype cues before garnish: fruit peel/rind/cut face/segments/
-  seeds; pie or tart crust wall, fluted/lattice rim, filling, slice/cavity;
-  burger or sandwich bun halves plus distinct filling layers; bread dome,
-  split seam, crust color, and score/sesame marks.
-- Dish support is context, not the object. Keep food resting on or inside the
-  support with no floating gap, and avoid oversized vessels that swallow the
-  food silhouette.
-
-Bowl of food / noodle soup construction guard:
-- First build the vessel as a real bowl, not a bucket or cone: rounded
-  clay/ceramic outer shell, open top, visible thick rolled rim, shallow inner
-  basin, small foot ring/base, and smooth continuous sides.
-- If handles are visible, add two small loop handles attached to the upper
-  side wall. Each handle must visibly connect at both ends to the bowl; do not
-  leave handle arcs floating or clipped.
-- Build the food surface inside the bowl after the vessel: a flat or slightly
-  concave broth/liquid disk just below the rim, colored as soup/sauce, filling
-  the visible interior.
-- Noodles should rest on or slightly above the broth surface as pale curved
-  tubes. Use several short `TubeGeometry` curves sitting on the noodles/broth.
-  Keep them inside the bowl.
-- Preserve scale hierarchy: bowl is the container, broth fills the interior,
-  noodles are dominant food detail, toppings are small accents.
-- Avoid exterior dark triangular panels, cone-like side patches, or decorative
-  shapes that are not in the reference. The bowl wall should be continuous
-  terracotta/ceramic material unless the image clearly shows decoration.
-- Keep all food in contact with the broth/interior surface; nothing should
-  float above the bowl or intersect through the wall.
 
 Proportion tuning shortcut:
 - The fastest fix for a `wrong_proportion` issue is usually
@@ -295,18 +339,20 @@ Reminders before you write:
 - If this is seating furniture, use the seating furniture handbook: build
   distinct cushions, back modules, arms, legs/frame, seams/piping, and any
   tufted buttons or slats before minor decorative details.
+  For tub/barrel/club chairs, apply the tub-chair playbook.
 - If the object has painted/printed floral or ornamental texture, use the
   surface decoration handbook: motifs must be flat or shallow, parented to
   the object, and placed just above the surface normal, not floating around it.
+- If this is a bowl, basket, strainer, noodle dish, yogurt cup, or open food
+  container, use the food vessel handbook: build the hollow vessel, rim,
+  contained food surface, and utensil/handle as distinct attached parts.
+- If this is jewelry, a ring, or a gemstone setting, use the jewelry handbook:
+  keep the band/hoop, finger hole, shoulders, bezel/prongs, gemstone, and side
+  details as distinct attached parts with separate metal/gem materials.
 - If this is a vehicle, use the vehicle modeling playbook: set shared
   dimensions first, keep front +Z / Y-up / width X, attach all major parts,
   and prioritize correct wheel/rotor/wing count and orientation before trim.
-- If this is jewelry, a gem, or a hanging ornament, use the jewelry/gem guard:
-  build the ring/pendant/gem carrier first, then attach prongs, bails, hooks,
-  chains, or caps so they visibly touch the parent.
-- If this is food on a dish or vessel, use the food and dish support guard:
-  model the edible mass and subtype cues first, then add plate/bowl/tray
-  support only at the correct scale and contact point.
+  For compact or toy-like cars, apply the compact-car playbook.
 - Call your `fitToUnitCube` helper with `0.95 / maxDim` so the object
   fills ~95% of the frame (not lost in background).
 
@@ -324,18 +370,20 @@ Reminders before you write:
 - If this is seating furniture, use the seating furniture handbook: build
   distinct cushions, back modules, arms, legs/frame, seams/piping, and any
   tufted buttons or slats before minor decorative details.
+  For tub/barrel/club chairs, apply the tub-chair playbook.
 - If the object has painted/printed floral or ornamental texture, use the
   surface decoration handbook: motifs must be flat or shallow, parented to
   the object, and placed just above the surface normal, not floating around it.
+- If this is a bowl, basket, strainer, noodle dish, yogurt cup, or open food
+  container, use the food vessel handbook: build the hollow vessel, rim,
+  contained food surface, and utensil/handle as distinct attached parts.
+- If this is jewelry, a ring, or a gemstone setting, use the jewelry handbook:
+  keep the band/hoop, finger hole, shoulders, bezel/prongs, gemstone, and side
+  details as distinct attached parts with separate metal/gem materials.
 - If this is a vehicle, use the vehicle modeling playbook: set shared
   dimensions first, keep front +Z / Y-up / width X, attach all major parts,
   and prioritize correct wheel/rotor/wing count and orientation before trim.
-- If this is jewelry, a gem, or a hanging ornament, use the jewelry/gem guard:
-  build the ring/pendant/gem carrier first, then attach prongs, bails, hooks,
-  chains, or caps so they visibly touch the parent.
-- If this is food on a dish or vessel, use the food and dish support guard:
-  model the edible mass and subtype cues first, then add plate/bowl/tray
-  support only at the correct scale and contact point.
+  For compact or toy-like cars, apply the compact-car playbook.
 - Call your `fitToUnitCube` helper with `0.95 / maxDim` so the object
   fills ~95% of the frame (not lost in background).
 
@@ -343,7 +391,7 @@ Return ONLY the JS module source.
 """
 
 
-_PATCH_OUTPUT_SPEC = """## Output format - SEARCH/REPLACE blocks
+_PATCH_OUTPUT_SPEC = """## Output format — SEARCH/REPLACE blocks
 
 Emit ONE OR MORE SEARCH/REPLACE blocks describing the minimal edits to the
 current file shown above. Each block has this exact shape:
@@ -365,8 +413,27 @@ Rules:
 - Multiple blocks are applied sequentially top to bottom; later blocks see
   the result of earlier ones.
 
-If, and only if, the change is so structural that a patch would be larger
-than the full file, emit one FULL_REWRITE block instead:
+Example (changes seat position and adds two armrests):
+
+<<<<<<< SEARCH
+const seat = new THREE.Mesh(seatGeom, woodMat);
+seat.position.y = 0.2;
+=======
+const seat = new THREE.Mesh(seatGeom, woodMat);
+seat.position.y = 0.25;
+seat.scale.set(1.2, 1, 1);
+>>>>>>> REPLACE
+
+<<<<<<< SEARCH
+group.add(seat);
+=======
+group.add(seat);
+group.add(armrest_left);
+group.add(armrest_right);
+>>>>>>> REPLACE
+
+If (and only if) the change is so structural that a patch would be larger
+than the full file, emit one FULL_REWRITE block instead — NOT both:
 
 <<<<<<< FULL_REWRITE
 <complete corrected JS module starting with `export default function generate(THREE)`>
@@ -478,6 +545,8 @@ Vehicle repair priority:
 - When the issue says missing spokes, treads, mirrors, lights, baskets,
   landing gear, propeller blades, or trim, add those parts without deleting
   already-correct body/frame geometry.
+- For compact or toy-like cars, apply the compact-car playbook before
+  changing paint or trim.
 
 Surface decoration repair priority:
 - If painted or printed texture appears as detached blobs, floating flowers,
@@ -490,6 +559,38 @@ Surface decoration repair priority:
 - For curved vessels, convert decoration placement to angle/height/radius
   coordinates and orient each motif to the radial normal. Stems/vines should
   be thin curves following the same surface patch.
+
+Food vessel repair priority:
+- For bowls, baskets, strainers, noodle dishes, and yogurt cups, fix the
+  object read before small color details: open hollow vessel, rim, foot/base,
+  food inside the vessel, and any utensil/handle attached in a plausible
+  diagonal or rim-mounted position.
+- If noodles appear as vertical strands, a tassel, or a central pole, rebuild
+  them as many low horizontal TubeGeometry loops and arcs sitting below the
+  rim. Keep some front/top strands visible above the vessel wall.
+- If a bamboo strainer looks like a dark wicker nest, lighten the material,
+  add a thick tan rim and foot ring, and use ordered ribs/mesh lines connected
+  between base and rim rather than random exterior sticks.
+- If a yogurt cup has a lid-like top or printed marks over the food, replace
+  the top with a smooth white cream surface and move label/text decoration to
+  the side wall. Add a spoon only if it is attached to or submerged in the
+  cream, not floating.
+
+Jewelry repair priority:
+- For rings and gemstone jewelry, fix structure before color: continuous band
+  with clear finger hole, shoulders connected to the setting, bezel/prongs
+  around the stone, and the gemstone facing +Z.
+- If the render is a torus/blob with no setting, add a distinct gemstone,
+  bezel ring, mirrored shoulders, and prongs without deleting the band.
+- If a central sphere hides the ring, shrink or move it forward/up, restore
+  the visible band hole, and add side shoulders/filigree around the stone.
+- If a faceted sapphire/diamond looks like a smooth dark lump, replace or
+  augment it with angular transparent gem geometry and small bright facet
+  planes. If a moonstone/pearl looks like plain gray plastic, use translucent
+  milky material plus subtle cloudy speckles and a silver setting.
+- Preserve correct metal/gem material separation. Do not turn silver side
+  details into black plastic, and do not use one dark material for the whole
+  object.
 
 Seating repair priority:
 - For sofas/chairs/loungers, fix object class and furniture structure before
@@ -505,30 +606,15 @@ Seating repair priority:
 - Preserve correct color/material regions while repairing structure: do not
   turn wood frames into upholstery, metal legs into fabric, or leather/fabric
   cushions into bare boxes.
-
-Jewelry/gem repair priority:
-- For rings, pendants, charms, gems, ornaments, and chain jewelry, fix the
-  stable carrier first: loop/band, pendant plate, faceted gem body, ornament
-  shell, cap, or bail. Then attach prongs, hooks, clasps, chain links, and
-  insets so every small metal detail visibly touches the parent.
-- If a gem appears as a smooth ball or flat dot, convert it to a faceted
-  low-poly solid with conservative glass or colored crystal material before
-  adding highlights.
-
-Food and dish repair priority:
-- Preserve the edible object's identity before garnish or tableware: fruit
-  segments/seeds/rind, pie crust/filling/slice gap, burger bun/filling layers,
-  bread score marks, or plated food mass.
-- If plate, bowl, cup, tray, or utensils dominate the silhouette, scale them
-  down and keep the food resting on or inside the support with no floating gap.
+- If a tub/barrel/club chair looks like a full cylinder, bucket, cart, or
+  railing, apply the tub-chair playbook before changing colors.
 
 ## Rules
 
 - Target `target_node_id` when present — find `const <id> = ...` in the
-  current file above and edit that section.
-- Do NOT rewrite the entire module from scratch. Emit minimal targeted
-  SEARCH/REPLACE blocks against the current file.
-- Do NOT touch PRESERVE items — exclude them from your SEARCH blocks.
+  current file and edit that section.
+- Prefer minimal targeted edits over a full rewrite.
+- Do NOT touch PRESERVE items.
 - Remember the Critical API rules from your system prompt — especially:
   · No randomness: `Math.random`, `Date`, `crypto`, `performance`,
     `THREE.MathUtils.seededRandom` all raise `FORBIDDEN_IDENTIFIER` and
@@ -537,8 +623,7 @@ Food and dish repair priority:
     vertices and a blank render). Prefer SplineCurve / CubicBezierCurve for
     smooth profiles; their getSpacedPoints() returns Vector2[] directly.
 
-""" + _PATCH_OUTPUT_SPEC + """
-"""
+""" + _PATCH_OUTPUT_SPEC
 
 
 CODER_USER_TEMPLATE_CRITIC_REPAIR = """Your previous JavaScript module rendered, but the visual critic found
@@ -608,6 +693,8 @@ Vehicle repair priority:
 - When the issue says missing spokes, treads, mirrors, lights, baskets,
   landing gear, propeller blades, or trim, add those parts without deleting
   already-correct body/frame geometry.
+- For compact or toy-like cars, apply the compact-car playbook before
+  changing paint or trim.
 
 Surface decoration repair priority:
 - If painted or printed texture appears as detached blobs, floating flowers,
@@ -620,6 +707,38 @@ Surface decoration repair priority:
 - For curved vessels, convert decoration placement to angle/height/radius
   coordinates and orient each motif to the radial normal. Stems/vines should
   be thin curves following the same surface patch.
+
+Food vessel repair priority:
+- For bowls, baskets, strainers, noodle dishes, and yogurt cups, fix the
+  object read before small color details: open hollow vessel, rim, foot/base,
+  food inside the vessel, and any utensil/handle attached in a plausible
+  diagonal or rim-mounted position.
+- If noodles appear as vertical strands, a tassel, or a central pole, rebuild
+  them as many low horizontal TubeGeometry loops and arcs sitting below the
+  rim. Keep some front/top strands visible above the vessel wall.
+- If a bamboo strainer looks like a dark wicker nest, lighten the material,
+  add a thick tan rim and foot ring, and use ordered ribs/mesh lines connected
+  between base and rim rather than random exterior sticks.
+- If a yogurt cup has a lid-like top or printed marks over the food, replace
+  the top with a smooth white cream surface and move label/text decoration to
+  the side wall. Add a spoon only if it is attached to or submerged in the
+  cream, not floating.
+
+Jewelry repair priority:
+- For rings and gemstone jewelry, fix structure before color: continuous band
+  with clear finger hole, shoulders connected to the setting, bezel/prongs
+  around the stone, and the gemstone facing +Z.
+- If the render is a torus/blob with no setting, add a distinct gemstone,
+  bezel ring, mirrored shoulders, and prongs without deleting the band.
+- If a central sphere hides the ring, shrink or move it forward/up, restore
+  the visible band hole, and add side shoulders/filigree around the stone.
+- If a faceted sapphire/diamond looks like a smooth dark lump, replace or
+  augment it with angular transparent gem geometry and small bright facet
+  planes. If a moonstone/pearl looks like plain gray plastic, use translucent
+  milky material plus subtle cloudy speckles and a silver setting.
+- Preserve correct metal/gem material separation. Do not turn silver side
+  details into black plastic, and do not use one dark material for the whole
+  object.
 
 Seating repair priority:
 - For sofas/chairs/loungers, fix object class and furniture structure before
@@ -635,30 +754,15 @@ Seating repair priority:
 - Preserve correct color/material regions while repairing structure: do not
   turn wood frames into upholstery, metal legs into fabric, or leather/fabric
   cushions into bare boxes.
-
-Jewelry/gem repair priority:
-- For rings, pendants, charms, gems, ornaments, and chain jewelry, fix the
-  stable carrier first: loop/band, pendant plate, faceted gem body, ornament
-  shell, cap, or bail. Then attach prongs, hooks, clasps, chain links, and
-  insets so every small metal detail visibly touches the parent.
-- If a gem appears as a smooth ball or flat dot, convert it to a faceted
-  low-poly solid with conservative glass or colored crystal material before
-  adding highlights.
-
-Food and dish repair priority:
-- Preserve the edible object's identity before garnish or tableware: fruit
-  segments/seeds/rind, pie crust/filling/slice gap, burger bun/filling layers,
-  bread score marks, or plated food mass.
-- If plate, bowl, cup, tray, or utensils dominate the silhouette, scale them
-  down and keep the food resting on or inside the support with no floating gap.
+- If a tub/barrel/club chair looks like a full cylinder, bucket, cart, or
+  railing, apply the tub-chair playbook before changing colors.
 
 ## Rules
 
 - Target `target_node_id` when present — find `const <id> = ...` in the
-  current file above and edit that section.
-- Do NOT rewrite the entire module from scratch. Emit minimal targeted
-  SEARCH/REPLACE blocks against the current file.
-- Do NOT touch PRESERVE items — exclude them from your SEARCH blocks.
+  current file and edit that section.
+- Prefer minimal targeted edits over a full rewrite.
+- Do NOT touch PRESERVE items.
 - Remember the Critical API rules from your system prompt — especially:
   · No randomness: `Math.random`, `Date`, `crypto`, `performance`,
     `THREE.MathUtils.seededRandom` all raise `FORBIDDEN_IDENTIFIER` and
@@ -667,5 +771,4 @@ Food and dish repair priority:
     vertices and a blank render). Prefer SplineCurve / CubicBezierCurve for
     smooth profiles; their getSpacedPoints() returns Vector2[] directly.
 
-""" + _PATCH_OUTPUT_SPEC + """
-"""
+""" + _PATCH_OUTPUT_SPEC
